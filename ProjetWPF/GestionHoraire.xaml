@@ -56,7 +56,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding NomR}" Width="125"/>
-                        <TextBlock Text="{Binding date}" Width="150"/>
+                        <TextBlock Text="{Binding date}" Width="110"/>
                         <TextBlock Text="{Binding Temps}" Width="25"/>
                     </StackPanel>
                 </DataTemplate>

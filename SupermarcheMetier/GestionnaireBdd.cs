@@ -77,8 +77,8 @@ namespace SupermarcheMetier
             cmd = new MySqlCommand("select codeE, codeR, nomR, date, temps from rayon join travailler on rayon.numR = travailler.codeR join employe on travailler.codeE = employe.numE where numE = " + unNumE, cnx);
             dr = cmd.ExecuteReader();
             while (dr.Read())
-            {
-                Travailler unTravail = new Travailler(Convert.ToInt16(dr[0].ToString()), Convert.ToInt16(dr[1].ToString()), dr[2].ToString(), dr[3].ToString(), Convert.ToInt16(dr[4].ToString()));
+            { // Seulement la date est récupérée (Substring) car l'heure est toujours 00:00:00
+                Travailler unTravail = new Travailler(Convert.ToInt16(dr[0].ToString()), Convert.ToInt16(dr[1].ToString()), dr[2].ToString(), dr[3].ToString().Substring(0, 10), Convert.ToInt16(dr[4].ToString()));
                 mesTravaux.Add(unTravail);
             }
             dr.Close();
@@ -101,7 +101,7 @@ namespace SupermarcheMetier
         }
         public void InsererTravaillerPourEmploye(int unCodeE, int unCodeR, string uneDate, int unTemps)
         {
-            cmd = new MySqlCommand("insert into travailler values (" + unCodeE + "," + unCodeR + "," + uneDate + "," + unTemps + ")", cnx);
+            cmd = new MySqlCommand("insert into travailler values (" + unCodeE + "," + unCodeR + ",'" + uneDate + "'," + unTemps + ")", cnx);
             cmd.ExecuteNonQuery();
         }
     }

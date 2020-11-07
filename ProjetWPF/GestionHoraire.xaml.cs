@@ -39,11 +39,6 @@ namespace ProjetWPF
         {
             cboEmployes.ItemsSource = gstBdd.GetAllEmploye();
             cboRayons.ItemsSource = gstBdd.GetAllRayons();
-            //txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            SqlDateTime d = new SqlDateTime(DateTime.Now);
-            MySqlDateTime r = new MySqlDateTime(DateTime.Now);
-            txtDate.Text = r.ToString();
-            
         }
 
         private void cboEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,7 +73,7 @@ namespace ProjetWPF
             }
             else
             {
-                gstBdd.InsererTravaillerPourEmploye(lEmploye.NumE, leRayon.NumR, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), Convert.ToInt16(txtSlider.Text));
+                gstBdd.InsererTravaillerPourEmploye(lEmploye.NumE, leRayon.NumR, DateTime.Now.ToString("s").Substring(0, 10), Convert.ToInt16(txtSlider.Text));
                 sldTemps.Value = 0;
             }
         }
