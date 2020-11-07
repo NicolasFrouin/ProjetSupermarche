@@ -1,0 +1,44 @@
+﻿<Window x:Class="ProjetWPF.RayonSecteur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetWPF"
+        mc:Ignorable="d"
+        Title="RayonSecteur" Height="350" Width="300" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Secteurs / Rayons" FontSize="40" FontFamily="Monotype Corsiva" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Grid.Column="0" Grid.ColumnSpan="3"/>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Liste des secteurs : " VerticalAlignment="Center" />
+            <ComboBox Name="cboSecteurs" Width="190" SelectionChanged="cboSecteurs_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NomS}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <ListView Name="lstRayon" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding NumR}" Width="25"/>
+                        <TextBlock Text="{Binding NomR}" Width="150"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
