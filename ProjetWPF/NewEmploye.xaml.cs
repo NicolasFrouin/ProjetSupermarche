@@ -43,7 +43,7 @@ namespace ProjetWPF
             {
                 gstBdd.InsererEmploye(Convert.ToInt16(txtNumEmploye.Text), txtNomEmploye.Text);
                 txtNumEmploye.Text = gstBdd.GetLastNumEmploye().ToString();
-                lstEmploye.ItemsSource = null;
+                txtNomEmploye.Text = "";
                 lstEmploye.ItemsSource = gstBdd.GetAllEmploye();
             }
         }
