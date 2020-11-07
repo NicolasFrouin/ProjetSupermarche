@@ -71,7 +71,7 @@ namespace SupermarcheMetier
             dr.Close();
             return mesRayons;
         }
-        public List<Travailler> GetTravaillerParEmploye(int unNumE)
+        public List<Travailler> GetAllTravaillerParEmploye(int unNumE)
         {
             List<Travailler> mesTravaux = new List<Travailler>();
             cmd = new MySqlCommand("select codeE, codeR, nomR, date, temps from rayon join travailler on rayon.numR = travailler.codeR join employe on travailler.codeE = employe.numE where numE = " + unNumE, cnx);
@@ -99,9 +99,9 @@ namespace SupermarcheMetier
             cmd = new MySqlCommand("insert into employe values (" + unNum + ",'" + unNom + "')", cnx);
             cmd.ExecuteNonQuery();
         }
-        public void InsererTravaillerPourEmploye(int unCodeE, int unCodeR, string uneDate, int unTemps)
+        public void InsererTravaillerPourEmploye(Travailler unTravail)
         {
-            cmd = new MySqlCommand("insert into travailler values (" + unCodeE + "," + unCodeR + ",'" + uneDate + "'," + unTemps + ")", cnx);
+            cmd = new MySqlCommand("insert into travailler values (" + unTravail.CodeE + "," + unTravail.CodeR + ",'" + unTravail.Date + "'," + unTravail.Temps + ")", cnx);
             cmd.ExecuteNonQuery();
         }
     }

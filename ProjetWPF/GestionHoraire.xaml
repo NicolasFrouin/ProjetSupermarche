@@ -45,7 +45,7 @@
         </ComboBox>
         <DockPanel Grid.Row="3">
             <TextBlock Text="Temps passé : " VerticalAlignment="Center"/>
-            <TextBlock Name="txtSlider" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50"/>
+            <TextBlock Name="txtSlider" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50"/>
         </DockPanel>
             <Slider Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" ValueChanged="sldTemps_ValueChanged" 
                     Name="sldTemps" Minimum="0" Maximum="12"/>
@@ -56,7 +56,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding NomR}" Width="125"/>
-                        <TextBlock Text="{Binding date}" Width="110"/>
+                        <TextBlock Text="{Binding Date}" Width="110"/>
                         <TextBlock Text="{Binding Temps}" Width="25"/>
                     </StackPanel>
                 </DataTemplate>

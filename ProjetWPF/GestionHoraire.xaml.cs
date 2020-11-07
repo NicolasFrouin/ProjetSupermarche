@@ -39,12 +39,14 @@ namespace ProjetWPF
         {
             cboEmployes.ItemsSource = gstBdd.GetAllEmploye();
             cboRayons.ItemsSource = gstBdd.GetAllRayons();
+            //new MySqlDateTime(DateTime.Now).ToString();
+            //new SqlDateTime(DateTime.Now).ToSqlString().ToString();
         }
 
         private void cboEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lEmploye = new Employe((cboEmployes.SelectedItem as Employe).NumE, (cboEmployes.SelectedItem as Employe).PrenomE);
-            lstTravailler.ItemsSource = gstBdd.GetTravaillerParEmploye(lEmploye.NumE);
+            lstTravailler.ItemsSource = gstBdd.GetAllTravaillerParEmploye(lEmploye.NumE);
         }
 
         private void cboRayons_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,14 +69,18 @@ namespace ProjetWPF
             {
                 MessageBox.Show("Veuillez sélectionner un rayon");
             }
-            else if (false) // test si l'employé a déjà travaillé dans le rayon ce jour
-            {
-                
-            }
             else
             {
-                gstBdd.InsererTravaillerPourEmploye(lEmploye.NumE, leRayon.NumR, DateTime.Now.ToString("s").Substring(0, 10), Convert.ToInt16(txtSlider.Text));
-                sldTemps.Value = 0;
+                Travailler leTravail = new Travailler(lEmploye.NumE, leRayon.NumR, leRayon.NomR, DateTime.Now.ToString("s").Substring(0, 10), Convert.ToInt16(txtSlider.Text));
+                try
+                {
+                    gstBdd.InsererTravaillerPourEmploye(leTravail);
+                    lstTravailler.ItemsSource = gstBdd.GetAllTravaillerParEmploye(lEmploye.NumE);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("L'employé a déjà travaillé dans ce rayon aujourd'hui");
+                }
             }
         }
     }
