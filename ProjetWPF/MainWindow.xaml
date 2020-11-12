@@ -22,14 +22,8 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Gestion supermarché" FontSize="70" FontFamily="Monotype Corsiva" HorizontalAlignment="Center" VerticalAlignment="Center"
                    Grid.Column="0" Grid.ColumnSpan="5"/>
-        <DockPanel Grid.Column="0" Grid.Row="2">
-            <Button Name="btnRayonSecteur" Click="btnRayonSecteur_Click" Content="Rayon / Secteurs" FontSize="20"/>
-        </DockPanel>
-        <DockPanel Grid.Column="2" Grid.Row="2">
-            <Button Name="btnNewEmploye" Click="btnNewEmploye_Click" Content="New Employé" FontSize="20"/>
-        </DockPanel>
-        <DockPanel Grid.Column="4" Grid.Row="2">
-            <Button Name="btnGestionHoraire" Click="btnGestionHoraire_Click" Content="Gestion Horaires" FontSize="20"/>
-        </DockPanel>
+        <Button Name="btnRayonSecteur" Click="btnRayonSecteur_Click" Content="Rayon / Secteurs" FontSize="20" Grid.Column="0" Grid.Row="2"/>
+        <Button Name="btnNewEmploye" Click="btnNewEmploye_Click" Content="New Employé" FontSize="20" Grid.Column="2" Grid.Row="2"/>
+        <Button Name="btnGestionHoraire" Click="btnGestionHoraire_Click" Content="Gestion Horaires" FontSize="20" Grid.Column="4" Grid.Row="2"/>
     </Grid>
 </Window>
